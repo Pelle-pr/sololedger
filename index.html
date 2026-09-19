@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Freelance Hourly Rate Calculator – free</title>
+<meta name="description" content="Free freelance hourly rate calculator. Enter your income goal, expenses, tax rate and time off to get the minimum hourly and day rate you need.">
+<style>body{font:16px/1.5 system-ui,sans-serif;max-width:640px;margin:2rem auto;padding:0 16px;color:#1b2430}
+label{display:block;margin:.8rem 0 .2rem}input{width:100%;padding:.5rem;font-size:1rem;box-sizing:border-box}
+.out{background:#eef4ff;padding:1rem;border-radius:8px;margin-top:1.2rem}.big{font-size:2rem;font-weight:700}
+.cta{background:#1f3a5f;color:#fff;padding:1rem;border-radius:8px;margin-top:2rem}.cta a{color:#ffd66b}</style></head><body>
+<h1>Freelance Hourly Rate Calculator</h1>
+<p>Work out the minimum rate you must charge to hit your income goal after tax, expenses and unpaid time.</p>
+<label>Desired yearly take-home income<input id="inc" type="number" value="60000"></label>
+<label>Yearly business expenses<input id="exp" type="number" value="5000"></label>
+<label>Tax &amp; contributions rate (%)<input id="tax" type="number" value="35"></label>
+<label>Weeks off per year<input id="off" type="number" value="6"></label>
+<label>Working hours per week<input id="hrs" type="number" value="40"></label>
+<label>Billable share of your hours (%)<input id="bill" type="number" value="65"></label>
+<div class="out"><div>Minimum hourly rate</div><div class="big" id="rate">–</div><div id="day"></div><div id="rev"></div></div>
+<div class="cta"><b>Want this plus an invoice tracker, expense log and tax set-aside sheet?</b><br>Get the Freelancer Finance Toolkit (Excel). <a href="https://payhip.com/b/EtfdW">Buy the toolkit</a></div>
+<p style="font-size:.85rem;color:#556">Estimates only, not tax or financial advice.</p>
+<script>
+const $=id=>+document.getElementById(id).value;
+function calc(){const rev=$('inc')/(1-$('tax')/100)+$('exp');const h=(52-$('off'))*$('hrs')*$('bill')/100;
+const r=rev/h;const f=n=>isFinite(n)?n.toLocaleString(undefined,{maximumFractionDigits:2}):'–';
+rate.textContent=f(r);day.textContent='Day rate (7.4h): '+f(r*7.4);rev.textContent='Required revenue: '+f(rev)+' / year, '+f(h)+' billable hours';}
+document.querySelectorAll('input').forEach(i=>i.oninput=calc);calc();
+</script></body></html>
