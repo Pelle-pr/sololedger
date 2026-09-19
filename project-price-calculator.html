@@ -1,0 +1,11 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Freelance Project Price Calculator – free</title><meta name="description" content="Free project price calculator for freelancers. Estimate hours, add a buffer and get a fixed quote."><link rel="canonical" href="https://pelle-pr.github.io/sololedger/project-price-calculator.html"><style>body{font:16px/1.5 system-ui,sans-serif;max-width:640px;margin:2rem auto;padding:0 16px;color:#1b2430}
+label{display:block;margin:.8rem 0 .2rem}input{width:100%;padding:.5rem;font-size:1rem;box-sizing:border-box}
+.out{background:#eef4ff;padding:1rem;border-radius:8px;margin-top:1.2rem}.big{font-size:2rem;font-weight:700}
+.cta{background:#1f3a5f;color:#fff;padding:1rem;border-radius:8px;margin-top:2rem}.cta a{color:#ffd66b}nav a{margin-right:1rem}</style></head><body>
+<nav><a href="index.html">Hourly rate</a><a href="project-price-calculator.html">Project price</a><a href="invoice-late-fee-calculator.html">Late fee</a><a href="freelance-tax-set-aside-calculator.html">Tax set-aside</a></nav><h1>Freelance Project Price Calculator</h1><p>Turn an hour estimate into a fixed project quote with a safety buffer.</p><label>Your hourly rate<input id="rate" type="number" value="75"></label><label>Estimated hours<input id="hours" type="number" value="40"></label><label>Buffer for scope creep (%)<input id="buf" type="number" value="20"></label><label>Direct costs (software, stock, etc.)<input id="cost" type="number" value="0"></label><div class="out" id="R"></div>
+<div class="cta"><b>Track invoices, expenses and tax in one Excel file.</b><br>Freelancer Finance Toolkit by SoloLedger. <a href="https://payhip.com/b/EtfdW">Get the toolkit</a></div>
+<p style="font-size:.85rem;color:#556">Estimates only, not tax, legal or financial advice.</p>
+<script>const $=id=>+document.getElementById(id).value;const R=document.getElementById('R');
+const f=n=>isFinite(n)?n.toLocaleString(undefined,{maximumFractionDigits:2}):'-';
+function calc(){const p=($('rate')*$('hours'))*(1+$('buf')/100)+$('cost');R.innerHTML='Fixed quote<div class=big>'+f(p)+'</div>Effective rate if buffer is unused: '+f(p/$('hours'))+' / hour';}document.querySelectorAll('input').forEach(i=>i.oninput=calc);calc();</script></body></html>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pelle-pr.github.io/sololedger/sitemap.xml

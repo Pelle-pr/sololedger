@@ -1,0 +1,11 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Freelance Tax Set-Aside Calculator – free</title><meta name="description" content="Free calculator showing how much of each payment to set aside for tax as a freelancer."><link rel="canonical" href="https://pelle-pr.github.io/sololedger/freelance-tax-set-aside-calculator.html"><style>body{font:16px/1.5 system-ui,sans-serif;max-width:640px;margin:2rem auto;padding:0 16px;color:#1b2430}
+label{display:block;margin:.8rem 0 .2rem}input{width:100%;padding:.5rem;font-size:1rem;box-sizing:border-box}
+.out{background:#eef4ff;padding:1rem;border-radius:8px;margin-top:1.2rem}.big{font-size:2rem;font-weight:700}
+.cta{background:#1f3a5f;color:#fff;padding:1rem;border-radius:8px;margin-top:2rem}.cta a{color:#ffd66b}nav a{margin-right:1rem}</style></head><body>
+<nav><a href="index.html">Hourly rate</a><a href="project-price-calculator.html">Project price</a><a href="invoice-late-fee-calculator.html">Late fee</a><a href="freelance-tax-set-aside-calculator.html">Tax set-aside</a></nav><h1>Freelance Tax Set-Aside Calculator</h1><p>Enter a payment and your own estimated tax rate to see how much to reserve. Estimate only, not tax advice.</p><label>Payment received (before tax)<input id="pay" type="number" value="5000"></label><label>Deductible expenses tied to it<input id="exp" type="number" value="0"></label><label>Your estimated tax rate (%)<input id="tax" type="number" value="35"></label><div class="out" id="R"></div>
+<div class="cta"><b>Track invoices, expenses and tax in one Excel file.</b><br>Freelancer Finance Toolkit by SoloLedger. <a href="https://payhip.com/b/EtfdW">Get the toolkit</a></div>
+<p style="font-size:.85rem;color:#556">Estimates only, not tax, legal or financial advice.</p>
+<script>const $=id=>+document.getElementById(id).value;const R=document.getElementById('R');
+const f=n=>isFinite(n)?n.toLocaleString(undefined,{maximumFractionDigits:2}):'-';
+function calc(){const s=Math.max(0,$('pay')-$('exp'))*$('tax')/100;R.innerHTML='Set aside<div class=big>'+f(s)+'</div>You keep about '+f($('pay')-s);}document.querySelectorAll('input').forEach(i=>i.oninput=calc);calc();</script></body></html>

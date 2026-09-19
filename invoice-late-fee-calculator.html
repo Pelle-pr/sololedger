@@ -1,0 +1,11 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Invoice Late Fee Calculator – free</title><meta name="description" content="Free calculator for interest and late fees on overdue invoices. Enter amount, days late and annual rate."><link rel="canonical" href="https://pelle-pr.github.io/sololedger/invoice-late-fee-calculator.html"><style>body{font:16px/1.5 system-ui,sans-serif;max-width:640px;margin:2rem auto;padding:0 16px;color:#1b2430}
+label{display:block;margin:.8rem 0 .2rem}input{width:100%;padding:.5rem;font-size:1rem;box-sizing:border-box}
+.out{background:#eef4ff;padding:1rem;border-radius:8px;margin-top:1.2rem}.big{font-size:2rem;font-weight:700}
+.cta{background:#1f3a5f;color:#fff;padding:1rem;border-radius:8px;margin-top:2rem}.cta a{color:#ffd66b}nav a{margin-right:1rem}</style></head><body>
+<nav><a href="index.html">Hourly rate</a><a href="project-price-calculator.html">Project price</a><a href="invoice-late-fee-calculator.html">Late fee</a><a href="freelance-tax-set-aside-calculator.html">Tax set-aside</a></nav><h1>Invoice Late Fee Calculator</h1><p>Estimate interest on an overdue invoice. Check what late-payment rules apply in your country and what your contract says.</p><label>Invoice amount<input id="amt" type="number" value="1000"></label><label>Days overdue<input id="days" type="number" value="30"></label><label>Annual interest rate (%)<input id="rate" type="number" value="8"></label><label>Flat reminder fee (if any)<input id="flat" type="number" value="0"></label><div class="out" id="R"></div>
+<div class="cta"><b>Track invoices, expenses and tax in one Excel file.</b><br>Freelancer Finance Toolkit by SoloLedger. <a href="https://payhip.com/b/EtfdW">Get the toolkit</a></div>
+<p style="font-size:.85rem;color:#556">Estimates only, not tax, legal or financial advice.</p>
+<script>const $=id=>+document.getElementById(id).value;const R=document.getElementById('R');
+const f=n=>isFinite(n)?n.toLocaleString(undefined,{maximumFractionDigits:2}):'-';
+function calc(){const i=$('amt')*($('rate')/100)*$('days')/365;R.innerHTML='Interest + fees<div class=big>'+f(i+$('flat'))+'</div>Interest: '+f(i)+' | Total due: '+f($('amt')+i+$('flat'));}document.querySelectorAll('input').forEach(i=>i.oninput=calc);calc();</script></body></html>
